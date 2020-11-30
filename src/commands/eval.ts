@@ -1,6 +1,5 @@
 import { Client, Message, MessageEmbed } from "discord.js";
 import { Command } from "../Command";
-import FormData from "form-data";
 import fetch from "node-fetch";
 import { JSDOM } from "jsdom";
 import { URLSearchParams } from "url";
