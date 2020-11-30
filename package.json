@@ -1,0 +1,26 @@
+{
+  "name": "g-lua-tr-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "author": "Sardonyx78 <sardonyx@sardonyx.me>",
+  "license": "MIT",
+  "scripts": {
+    "start": "tsc && node ."
+  },
+  "devDependencies": {
+    "@types/jsdom": "^16.2.5",
+    "@types/node": "^14.14.10",
+    "@types/table": "^6.0.0",
+    "@types/dotenv": "^8.2.0",
+    "@types/node-fetch": "^2.5.7"
+  },
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "jsdom": "^16.4.0",
+    "node-fetch": "^2.6.1",
+    "table": "^6.0.4",
+    "tslib": "^2.0.3"
+  }
+}
