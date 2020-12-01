@@ -4,8 +4,6 @@ import fetch from "node-fetch";
 import { JSDOM } from "jsdom";
 import { URLSearchParams } from "url";
 
-const luaLocation = `./lua/bin/${process.platform}/lib/lua54`
-
 export default class EvalCommand extends Command {
      helpMsg = "Verilen Lua kodunu executelar";
      variations = ["eval", "runlua", "lua", "luaoynat"];
