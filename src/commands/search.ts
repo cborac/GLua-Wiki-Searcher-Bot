@@ -26,6 +26,9 @@ function testArray(inital: string[]): string[][] {
 }
 
 export default class SearchCommand extends Command {
+     helpMsg = "FacePunch Wikisinde bir şeyi arar.";
+     variations = ["search", "ara", "wikiara"];
+
      constructor(client: Client) {
           super(client)
      }
