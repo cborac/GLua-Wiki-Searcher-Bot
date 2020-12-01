@@ -13,7 +13,11 @@ client.on("ready", () => console.log("Ready!"))
 readdirSync("./dist/commands").forEach(async x => {
      if (x.endsWith(".map")) return
 
-     client.commands.set(x.slice(0, x.length - 3), new (require("./commands/" + x).default)(client))
+     const command = new (require("./commands/" + x).default)(client);
+
+     for (const variation in command.variations){
+          client.commands.set(command.variations[variation], command);
+     }
 })
 
 client.on("message", msg => {
