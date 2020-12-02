@@ -75,7 +75,7 @@ export default class SearchCommand extends Command {
           }))
 
 
-          if (searchResults.length > 1 && searchResults[1].score - searchResults[0].score > 0.01) searchResults = searchResults.slice(0, 1);
+          if (searchResults.length > 1 && (searchResults[1].score - searchResults[0].score)/searchResults[1].score > 0.7) searchResults = searchResults.slice(0, 1);
           else {
                const searchResultsSameScore = searchResults.filter((result: any) => (result.score <= searchResults[0].score));
                searchResults = searchResults.slice(0, Math.min(10, Math.max(5, searchResultsSameScore.length)))
@@ -133,7 +133,7 @@ export default class SearchCommand extends Command {
 
                     msg.edit(new MessageEmbed({
                          color: 0x0082ff,
-                         title: window.document.getElementById("pagetitle").textContent,
+                         title: searchResults[0].item.search,
                          url: `${root}${searchResults[0].item.href}`,
                          description: "```lua\n" + (window.document.getElementsByClassName("function_line")[0] as HTMLDivElement).textContent.trim() + "\n```",
                          fields,
@@ -202,7 +202,7 @@ export default class SearchCommand extends Command {
 
                     msg.edit(new MessageEmbed({
                          color: 0x0082ff,
-                         title: window.document.getElementById("pagetitle").textContent,
+                         title: searchResults[0].item.search,
                          url: root + `${searchResults[0].item.href}`,
                          description: desc.textContent.length < 1000 ? desc.textContent.substring(0, 1000) : desc.textContent,
                          fields: [{
