@@ -6,7 +6,7 @@
   "author": "Sardonyx78 <sardonyx@sardonyx.me>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
     "start": "node ."
   },
   "devDependencies": {
