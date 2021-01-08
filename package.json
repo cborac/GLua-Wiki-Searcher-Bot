@@ -6,7 +6,8 @@
   "author": "Sardonyx78 <sardonyx@sardonyx.me>",
   "license": "MIT",
   "scripts": {
-    "start": "tsc && node ."
+    "build": "tsc"
+    "start": "node ."
   },
   "devDependencies": {
     "@types/jsdom": "^16.2.5",
