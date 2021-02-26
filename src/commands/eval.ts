@@ -6,19 +6,30 @@ import { URLSearchParams } from "url";
 
 export default class EvalCommand extends Command {
      helpMsg = "Verilen Lua kodunu executelar";
-     variations = ["eval", "runlua", "lua", "luaoynat"];
+     variations = ["eval", "runlua", "lua", "luaoynat", "print"];
 
      constructor(client: Client) {
           super(client)
      }
 
      async eval(message: Message, args: string[]) {
-          const lines = message.content.split("\n");
+          let luaContent = message.content.substring(message.content.indexOf(' '))
+          luaContent = luaContent.replace('```lua', '').replace(/`/gm, '').trim()
+
+          if (args.length === 1) {
+               message.reply(new MessageEmbed({
+                    color: 0xe54c3c,
+                    fields: [{
+                         name: "Hata",
+                         value: "```diff\nLua boş olamaz!\n```"
+                    }]
+               }))
+               return
+          }
 
           const body = new URLSearchParams()
 
-          body.append("input", lines.slice(1, lines.length - 1).join("\n"))
-
+          body.append("input", luaContent)
           const { window } = await fetch(`https://www.lua.org/cgi-bin/demo`, {
                method: "POST",
                body
@@ -28,11 +39,11 @@ export default class EvalCommand extends Command {
 
           const failed = (window.document.querySelector("body > p:nth-child(8) > img") as HTMLImageElement).src === "https://www.lua.org/images/alert.png"
 
-          message.channel.send(new MessageEmbed({
+          message.reply(new MessageEmbed({
                color: failed ? 0xe54c3c : 0x0082ff,
                fields: [{
                     name: "Giriş",
-                    value: "```lua\n" + lines.slice(1, lines.length - 1).join("\n") + "\n```"
+                    value: "```lua\n" + luaContent + "\n```"
                },
                {
                     name: "Çıkış",

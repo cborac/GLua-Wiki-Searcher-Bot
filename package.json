@@ -9,14 +9,14 @@
     "start": "tsc && node ."
   },
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/jsdom": "^16.2.5",
     "@types/node": "^14.14.10",
-    "@types/table": "^6.0.0",
-    "@types/dotenv": "^8.2.0",
-    "@types/node-fetch": "^2.5.7"
+    "@types/node-fetch": "^2.5.7",
+    "@types/table": "^6.0.0"
   },
   "dependencies": {
-    "discord.js": "^12.5.1",
+    "discord.js": "https://github.com/discordjs/discord.js",
     "dotenv": "^8.2.0",
     "fuse.js": "^6.4.3",
     "jsdom": "^16.4.0",

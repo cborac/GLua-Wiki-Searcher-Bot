@@ -24,7 +24,7 @@ export default class HelpCommand extends Command {
                return commandVariationsStr + " - "+command.helpMsg;
           }).join('\n');
 
-          message.channel.send(new MessageEmbed()
+          message.reply(new MessageEmbed()
           .setColor(0x0082ff)
           .setAuthor(this.client.user.username, this.client.user.avatarURL())
           .addFields([{ name: "Komutlar", value: commandsStr }]))
