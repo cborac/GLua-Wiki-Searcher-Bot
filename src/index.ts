@@ -1,11 +1,11 @@
-import { Client, Collection } from "discord.js"
+import { Client, Collection, Intents } from "discord.js"
 import { config } from "dotenv"
 import { readdirSync } from "fs"
 import { Command } from "./Command"
 
 config()
 
-const client: { commands?: Collection<string, Command> } & Client = new Client()
+const client: { commands?: Collection<string, Command> } & Client = new Client({ intents: [Intents.ALL] })
 client.commands = new Collection()
 
 client.on("ready", () => console.log("Ready!"))
@@ -15,12 +15,12 @@ readdirSync("./dist/commands").forEach(async x => {
 
      const command = new (require("./commands/" + x).default)(client);
 
-     for (const variation in command.variations){
+     for (const variation in command.variations) {
           client.commands.set(command.variations[variation], command);
      }
 })
 
-client.on("message", msg => {
+client.on("message", msg => { 
      if (!msg.guild || msg.author.bot || !msg.content.startsWith("?")) return
      const args = msg.content.split(" ").map(x => x.trim())
 
